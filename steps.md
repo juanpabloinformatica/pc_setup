@@ -16,16 +16,21 @@
     - zsh --> (terminal)
     - alacritty --> (terminal emulator) ** archinstall let me chose this **
     - i3 --> (window manager) ** archinstall let me chose this *
-    - yay --> (helper for more packages)
     - tmux -->  (terminal multiplexor)
     - firefox --> (web browser)
     - base-devel --> (c essentials)
-
+    - wget --> for (telecharging things from the web)
+    - curl --> for (transfering and getting data from the web)
+    - zip --> for (compressing folders)
+    - unzip --> (for unzip compressed folders)
+    - stow --> (for managing dotfiles)
+    - ripgrep --> (A grep with steroids, better with fzf and telescope)
   - Then Once the computer is accesable I install
+    - oh-my-zsh --> (This is what makes better zsh)
     - pyenv  --> (python version manager)
     - nvm --> (node  version manager)
-    - Fonts --> (Isoveka Nerd font)
     - vlc --> (video player)
+    - yay --> (helper for more packages)
     - simpleScreenRecoder --> (for recording my screen)
     - reflector --> (handles archlinux mirrors)
     - bluez --> (bluetooth protocl stack)
@@ -40,7 +45,7 @@
       remember adding **??** as vboxuser 
       | then install linux-headers | then give vboxdrv access to kernel-
       (sudo modprobe vboxdrv)
-    - 
+    - Fonts --> (Isoveka Nerd font)
 
   - Then I will need to clone all my dotfiles
     - .gitconfig
@@ -52,8 +57,11 @@
     - ~/.config
     - ~/.config/vim/
 
+  - Missing steps
+    - Generate ssh key to been able to push,pull, etc from pc to github/gitlab
+    - get alacritty themes
+
 
 - So there are two approaches, the first one is-
   taking advantage of the archinstall and the second-
   one, is making it more general for other linux distributions.
-
