@@ -102,4 +102,5 @@ function setAlacritty(){
 }
 
 # here it starts
+init
 
