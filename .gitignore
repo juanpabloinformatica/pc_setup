@@ -1,2 +1,4 @@
 .vagrant
 ./Vagrantfile
+archVirtualMachine.sh
+archlinux_test_manual/
