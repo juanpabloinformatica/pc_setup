@@ -111,7 +111,6 @@
     "ripgrep",
     "vlc",
     "bob",
-    "simpleScreenRecoder",
     "bluez",
     "bluez-utils",
     "feh",
@@ -121,7 +120,6 @@
     "valgrind",
     "lightdm",
     "xorg-server"
-
   ],
   "parallel downloads": 0,
   "profile_config": {
