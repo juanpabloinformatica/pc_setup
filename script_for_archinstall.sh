@@ -6,37 +6,40 @@ function init(){
 }
 function setImportantPrograms(){
     setupXdgDirectories&&\
+    sleep 4
     setupReflector &&\
+    sleep 4
     setupDocker &&\
-    setupZsh &&\
-    setupPyenv &&\
-    setupNvm &&\
+    sleep 4
+    setupZsh &\
+    setupPyenv &\
+    setupNvm &
 }
 function setupXdgDirectories(){
   if ! command -f xdg-user-dirs 2>&1 > /dev/null
   then 
-    sudo pacman -S xdg-user-dirs
+  pacman -S xdg-user-dirs
   fi
   xdg-user-dirs-update 
 }
 function setupReflector(){
   if ! command -v reflector 2>&1 >/dev/null
   then
-    sudo pacman -S reflector
+     pacman -S reflector
   fi
-  sudo systemctl enable reflector.timer
+   systemctl enable reflector.timer
 }
 function setupDocker(){
   
   if ! command -v docker 2>&1 >/dev/null
   then
-    sudo pacman -S docker
+     pacman -S docker
   fi
-sudo systemctl enable docker.service && sudo usermod -aG docker $USER && newgrp docker
+ systemctl enable docker.service &&  usermod -aG docker $USER && newgrp docker
 }
 function setZsh(){
   echo -e "\nINSTALLING ZSH HANDLER" &&\
-  sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" &&\
+  sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" 
 }
 function setupPyenv(){
   curl https://pyenv.run | bash &&\
@@ -50,21 +53,21 @@ function setupNvm(){
 function getConfigFiles(){
   if ! command -v stow 2>&1 >/dev/null
   then
-    sudo pacman -S stow
+     pacman -S stow
   fi
   if ! command -v git 2>&1 >/dev/null
   then
-    sudo pacman -S git
+   pacman -S git
   fi
-  git clone git@github.com:juanpabloinformatica/dotfiles.git $HOME/Documents/ &&\
+  git clone https://github.com/juanpabloinformatica/dotfiles.git $HOME/Documents/ &&\
   stow --target=$HOME $HOME/Documents/home &&\
   stow --target=$HOME/Pictures $HOME/Documents/Pictures
-  stow --target=$HOME/.config $HOME/Documents/config &&\
+  stow --target=$HOME/.config $HOME/Documents/config 
 }
 
 function setConfigFiles(){
-  setFont &&\
-  setAlacritty &&\
+  setFont &\
+  setAlacritty
 }
 function setFont(){
   echo -e "\nINSTALLING Iosevka FONT"
