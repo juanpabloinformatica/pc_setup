@@ -87,11 +87,6 @@
     "sys_enc": "UTF-8",
     "sys_lang": "en_US"
   },
-  "mirror_config": {
-    "custom_mirrors": [],
-    "mirror_regions": {
-    }
-  },
   "network_config": {
     "type": "iso"
   },
