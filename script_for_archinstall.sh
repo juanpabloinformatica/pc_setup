@@ -23,7 +23,7 @@ function cleanPreviousConfigs(){
   rm -rf $HOME/.config/i3
 }
 function setupXdgDirectories(){
-  if ! command -f xdg-user-dirs 2>&1 > /dev/null
+  if ! command -v xdg-user-dirs 2>&1 > /dev/null
   then 
   pacman -S xdg-user-dirs
   fi
