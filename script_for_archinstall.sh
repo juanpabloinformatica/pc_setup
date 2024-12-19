@@ -11,9 +11,13 @@ function setImportantPrograms(){
     sleep 4
     setupDocker &&\
     sleep 4
+    setupVim &&\
     setupZsh &\
     setupPyenv &\
     setupNvm &
+}
+function setupVim(){
+  rm -rf $HOME/.vim
 }
 function setupXdgDirectories(){
   if ! command -f xdg-user-dirs 2>&1 > /dev/null
@@ -59,10 +63,10 @@ function getConfigFiles(){
   then
    pacman -S git
   fi
-  git clone https://github.com/juanpabloinformatica/dotfiles.git $HOME/Documents/ &&\
-  stow --target=$HOME $HOME/Documents/home &&\
-  stow --target=$HOME/Pictures $HOME/Documents/Pictures
-  stow --target=$HOME/.config $HOME/Documents/config 
+  git clone https://github.com/juanpabloinformatica/dotfiles.git $HOME/Documents/dotfiles &&\
+  stow --target=$HOME $HOME/Documents/dotfiles/home &&\
+  stow --target=$HOME/Pictures $HOME/Documents/dotfiles/pictures
+  stow --target=$HOME/.config $HOME/Documents/dotfiles/config 
 }
 
 function setConfigFiles(){
