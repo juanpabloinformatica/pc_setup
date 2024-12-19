@@ -90,43 +90,6 @@
   "mirror_config": {
     "custom_mirrors": [],
     "mirror_regions": {
-      "France": [
-        "https://mirrors.jtremesay.org/archlinux/$repo/os/$arch",
-        "https://mirrors.gandi.net/archlinux/$repo/os/$arch",
-        "https://mirrors.eric.ovh/arch/$repo/os/$arch",
-        "https://mirrors.celianvdb.fr/archlinux/$repo/os/$arch",
-        "https://mirror.wormhole.eu/archlinux/$repo/os/$arch",
-        "https://mirror.theo546.fr/archlinux/$repo/os/$arch",
-        "https://mirror.thekinrar.fr/archlinux/$repo/os/$arch",
-        "https://mirror.syxpi.fr/arch/$repo/os/$arch",
-        "https://mirror.rznet.fr/archlinux/$repo/os/$arch",
-        "https://mirror.oldsql.cc/archlinux/$repo/os/$arch",
-        "https://mirror.its-tps.fr/archlinux/$repo/os/$arch",
-        "https://mirror.ibakerserver.pt/Arch/$repo/os/$arch",
-        "https://mirror.cyberbits.eu/archlinux/$repo/os/$arch",
-        "https://fr.mirrors.cicku.me/archlinux/$repo/os/$arch",
-        "https://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch",
-        "https://archlinux.mailtunnel.eu/$repo/os/$arch",
-        "https://arch.yourlabs.org/$repo/os/$arch",
-        "http://mirrors.standaloneinstaller.com/archlinux/$repo/os/$arch",
-        "http://mirrors.gandi.net/archlinux/$repo/os/$arch",
-        "http://mirrors.celianvdb.fr/archlinux/$repo/os/$arch",
-        "http://mirror.theo546.fr/archlinux/$repo/os/$arch",
-        "http://mirror.syxpi.fr/arch/$repo/os/$arch",
-        "http://mirror.rznet.fr/archlinux/$repo/os/$arch",
-        "http://mirror.oldsql.cc/archlinux/$repo/os/$arch",
-        "http://mirror.lastmikoi.net/archlinux/$repo/os/$arch",
-        "http://mirror.its-tps.fr/archlinux/$repo/os/$arch",
-        "http://mirror.cyberbits.eu/archlinux/$repo/os/$arch",
-        "http://mirror.archlinux.ikoula.com/archlinux/$repo/os/$arch",
-        "http://mir.archlinux.fr/$repo/os/$arch",
-        "http://ftp.u-strasbg.fr/linux/distributions/archlinux/$repo/os/$arch",
-        "http://fr.mirrors.cicku.me/archlinux/$repo/os/$arch",
-        "http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch",
-        "http://archlinux.mailtunnel.eu/$repo/os/$arch",
-        "http://archlinux.datagr.am/$repo/os/$arch",
-        "http://arch.yourlabs.org/$repo/os/$arch"
-      ]
     }
   },
   "network_config": {
