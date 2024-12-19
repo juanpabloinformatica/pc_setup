@@ -2,22 +2,25 @@
 function init(){
   setImportantPrograms &&\
   getConfigFiles &&\
+  cleanPreviousConfigs &&\
   setConfigFiles 
 }
 function setImportantPrograms(){
     setupXdgDirectories&&\
-    sleep 4
     setupReflector &&\
-    sleep 4
     setupDocker &&\
-    sleep 4
-    setupVim &&\
     setupZsh &\
     setupPyenv &\
     setupNvm &
 }
-function setupVim(){
+function cleanPreviousConfigs(){
   rm -rf $HOME/.vim
+  rm -rf $HOME/.tmux.conf
+  rm -rf $HOME/.zshrc
+  rm -rf $HOME/.config/vim
+  rm -rf $HOME/.config/nvim
+  rm -rf $HOME/.config/alacritty
+  rm -rf $HOME/.config/i3
 }
 function setupXdgDirectories(){
   if ! command -f xdg-user-dirs 2>&1 > /dev/null
@@ -64,9 +67,11 @@ function getConfigFiles(){
    pacman -S git
   fi
   git clone https://github.com/juanpabloinformatica/dotfiles.git $HOME/Documents/dotfiles &&\
-  stow --target=$HOME $HOME/Documents/dotfiles/home &&\
-  stow --target=$HOME/Pictures $HOME/Documents/dotfiles/pictures
-  stow --target=$HOME/.config $HOME/Documents/dotfiles/config 
+  cd $HOME/Documents/dotfiles
+  stow --target=$HOME home &&\
+  stow --target=$HOME/Pictures pictures
+  stow --target=$HOME/.config /config 
+  cd $PWD
 }
 
 function setConfigFiles(){
