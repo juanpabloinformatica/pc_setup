@@ -160,7 +160,10 @@
     "flameshot",
     "htop",
     "spotify-launcher",
-    "valgrind"
+    "valgrind",
+    "lightdm",
+    "xorg-server"
+
   ],
   "parallel downloads": 0,
   "profile_config": {
