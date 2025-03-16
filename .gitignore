@@ -2,3 +2,5 @@
 ./Vagrantfile
 archVirtualMachine.sh
 archlinux_test_manual/
+Session.vim
+tags
