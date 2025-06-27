@@ -1,4 +1,6 @@
 #! /usr/bin/bash
+# shellcheck disable=SC2034
+#
 USER=$1
 
 DOTFILE_HOME_CONFIG="home"
