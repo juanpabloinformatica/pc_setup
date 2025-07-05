@@ -4,3 +4,5 @@ archVirtualMachine.sh
 archlinux_test_manual/
 Session.vim
 tags
+githubApi.sh
+secrets.mk
