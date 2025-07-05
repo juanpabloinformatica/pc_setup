@@ -1,0 +1,54 @@
+# EditorConfig is awesome: https://EditorConfig.org
+# For Visual Studio Code, please install this extension: https://github.com/editorconfig/editorconfig-vscode
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+[{**.*sh,test/run,**.bats}]
+indent_size = tab
+indent_style = tab
+
+shell_variant      = bash
+binary_next_line   = true  # like -bn
+switch_case_indent = true  # like -ci
+space_redirects    = true  # like -sr
+keep_padding       = false # like -kp
+end_of_line        = lf
+charset            = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[**.bats]
+indent_size = tab
+indent_style = tab
+shell_variant	= bats
+
+[Makefile]
+indent_style = tab
+
+[*.json]
+indent_size = 2
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.js]
+indent_size = 2
+
+[*.{diff,md}]
+trim_trailing_whitespace = false
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[VERSION]
+insert_final_newline = false
