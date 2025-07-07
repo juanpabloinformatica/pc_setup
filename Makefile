@@ -12,8 +12,25 @@ SRC_PATH:=${PWD}/src
 DOTFILES:=${DOCUMENTS_PATH}/dotfiles
 SCRIPTS:=${DOCUMENTS_PATH}/scripts
 GIT_REPOS=$(shell cat repositories.txt)
+#Repositories
 DOTFILES_REPO=$(filter %dotfiles.git,${GIT_REPOS})
 SCRIPTS_REPO=$(filter %scripts.git,${GIT_REPOS})
+#projects + nand2tetris
+PROJECTS_REPO=$(filter %nand2tetris.git,${GIT_REPOS})
+PROJECTS_REPO+=$(filter %nand2tetrisAssembler.git,${GIT_REPOS})
+PROJECTS_REPO+=$(filter %nand2tetrisVm.git,${GIT_REPOS})
+#This should be better done
+PROJECTS_NAMES:=$(foreach project,${PROJECTS_REPO},$(shell awk -F"/" '{print$$5}' <<< ${project}))
+PROJECTS_NAMES:=$(foreach project,${PROJECTS_NAMES},$(shell awk -F"." '{print$$1}' <<< ${project}))
+# $(info ${PROJECTS_NAMES})
+# $(error "Stopping")
+PROJECTS_PATH:=$(addprefix ${DOCUMENTS_PATH}/projects/,${PROJECTS_NAMES})
+# TMP:=$(PROJECTS_PATH:)
+# $(info ${DOTFILES_REPO})
+# $(info ${SCRIPTS_REPO})
+# $(info ${PROJECTS_REPO})
+# $(info ${PROJECTS_PATH})
+# $(error "Stopping")
 
 
 all: dotfiles scripts
@@ -26,10 +43,16 @@ ${SCRIPTS}: repositories
 	git clone ${SCRIPTS_REPO} "$@"
 
 #this will get the projects
-# projects
+projects: ${PROJECTS_PATH}
 
-#Will update projects
-# update-projects
+
+${PROJECTS_PATH}:
+	echo "$@";\
+	substring=$$(awk -F"/" '{print $$6}' <<< $@ );\
+	echo "$$substring +i";\
+	repository="https://github.com/juanpabloinformatica/$${substring}.git";\
+	git clone $${repository} $@
+
 
 dotfiles: ${DOTFILES}
 
