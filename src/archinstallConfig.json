@@ -77,7 +77,12 @@
       }
     ]
   },
-  "disk_encryption": null,
+  "disk_encryption": {
+     "encryption_type": "luks",
+    "partitions": [
+      "580912f0-cae6-437c-ba4d-39d5077df384"
+    ]
+  },
   "hostname": "jppm",
   "kernels": [
     "linux"
