@@ -17,38 +17,54 @@ function _print_error() {
 function _packages_handling() {
 
   download_command="sudo pacman -S"
-  installing=()
   for p in "${needed_packages[@]}"; do
     if ! grep -q "${p}" temporal_pacman_packages.txt; then
       printf "\n%s --> %s" "Installing" "${p}"
       sudo pacman -S --noconfirm "${p}"
-      installing+=("${p}")
     else
       printf "\n%s --> %s" "${p}" "Already installed"
     fi
   done
 
-  # eval "${download_command} ${installing[@]} "
-
 }
 
 function _dir_handling() {
-  if [[ ! -d "${needed_dir}" ]]; then
-    printf "\n%s" "Creating needed directory"
-    mkdir -p "${needed_dir}"
-  else
-    printf "\n%s" "Needed directory already there"
-  fi
+  for dir in "${needed_dirs[@]}"; do
+    if [[ ! -d "${dir}" ]]; then
+      printf "\n%s" "Creating needed directory"
+      mkdir -p "${dir}"
+    else
+      printf "\n%s" "Needed directory already there"
+    fi
+  done
 }
+
+function _set_my_dirs() {
+  download_prefix="$HOME/Downloads"
+  video_prefix="$HOME/Videos"
+  needed_dirs=(
+    "$download_prefix/images"
+    "$download_prefix/isos"
+    "$download_prefix/other"
+    "$download_prefix/pdfs"
+    "$download_prefix/software"
+    "$download_prefix/compressed"
+    "$video_prefix/nand2tetris"
+    "$video_prefix/scripts"
+    "$video_prefix/others"
+  )
+  _dir_handling
+}
+
 function _font_handling() {
 
   printf "\n%s --> %s" "Check font" "${needed_font}"
-  if ! find "${needed_dir[0]}" -type f | grep -q Iosevka; then
+  if ! find "${dir[0]}" -type f | grep -q Iosevka; then
     printf "\n%s " "Font not found, Installing" "${needed_font}"
-    output_font="${needed_dir[0]}/IosevkaTerm.zip"
+    output_font="${dir[0]}/IosevkaTerm.zip"
     curl -L -o "${output_font}" \
       https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/IosevkaTerm.zip &&
-      unzip "${output_font}" -d "${needed_dir[0]}" ||
+      unzip "${output_font}" -d "${dir[0]}" ||
       _print_error "Iosevka font zip not able to be downloaded"
 
   fi
@@ -68,7 +84,7 @@ function set_font() {
   printf "\n%s" "set_font  function"
   needed_packages=("curl" "unzip")
   _packages_handling
-  needed_dir=("$HOME/.local/share/fonts")
+  needed_dirs=("$HOME/.local/share/fonts")
   _dir_handling
   needed_font=("IosevkaNerdFont")
   _font_handling
@@ -82,7 +98,10 @@ function set_nvm() {
   printf "\n%s" "set_nvm  function"
   needed_packages=("curl")
   _packages_handling
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+	needed_dirs=( "$HOME/.config/zsh" )
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh
+	source "${needed_dirs[0]}/.zshrc"
+  nvm install stable || return 1
 }
 function set_pyenv() {
   printf "\n%s" "set_pyenv function"
@@ -94,12 +113,15 @@ function set_dotfiles() {
   printf "\n%s" "set_dotfiles function"
   needed_packages=("git")
   _packages_handling
-  needed_dir=("$HOME/Documents")
+  needed_dirs=("$HOME/Documents")
   _dir_handling
-  git clone https://github.com/juanpabloinformatica/dotfiles.git "${needed_dir[0]}"
-  if [[ -d "${needed_dir[0]}/dotfiles" ]]; then
+
+  [[ ! -d "${dir[0]}/dotfiles" ]] &&
+    git clone --recursive-submodules https://github.com/juanpabloinformatica/dotfiles.git "${dir[0]}"
+
+  if [[ -d "${dir[0]}/dotfiles" ]]; then
     (
-      cd "${needed_dir[0]}/dotfiles" || exit
+      cd "${dir[0]}/dotfiles" || exit
       bash script_dotfiles.sh
     )
   fi
@@ -114,24 +136,42 @@ function handling_essential_user_packages() {
     fi
   done < <(cat packages.txt)
   _packages_handling
-  # for p in "${needed_packages[@]}";do
-  # 	printf "\n%s" "${p}"
-  # done
-
 }
+
 function set_dirs() {
   printf "\n%s" "Handling essential packages"
   needed_packages=("xdg-user-dir")
   _packages_handling
   xdg-user-dirs-update
+  _set_my_dirs
 }
 function get_personal_projects() {
   printf "\n%s" "get_personal_projects  function"
   needed_packages=("git")
   _packages_handling
-  needed_dir=("$HOME/Documents/projects")
+  needed_dirs=("$HOME/Documents/projects")
   _dir_handling
 
+}
+function set_scripts() {
+  printf "\n%s" "get_personal_projects  function"
+  needed_packages=("git")
+  _packages_handling
+  needed_dirs=("$HOME/Documents")
+  _dir_handling
+  script_url="$(awk '$0 ~ /scripts\.git/ && $0 ~ /clone_url/ {print $2}' ./repos.txt | tr -d "\"" | tr -d ",")"
+  [[ ! -d "${dir[0]}/scripts" ]] &&
+    git clone "${script_url}" "${dir[0]}/scripts"
+
+}
+
+function set_antidote() {
+  needed_packages=("git")
+  _packages_handling
+  needed_dirs=("$HOME/.config/zsh")
+  _dir_handling
+  [[ ! -d "${dir[0]}/.antidote" ]] &&
+    git clone --depth=1 https://github.com/mattmc3/antidote.git "${dir[0]}/.antidote"
 
 }
 
@@ -167,11 +207,20 @@ function main() {
     return 1 ||
     printf "\n%s" "font setup working"
 
-  #
+  ! set_scripts &&
+    printf "\n\%s" " set_scripts didn't work" &&
+    return 1 ||
+    printf "\n%s" "set_scripts setup working"
+
   ! set_dotfiles &&
     printf "\n%s" "font setup didn't work" &&
     return 1 ||
     printf "\n%s" "font setup working"
+
+  ! set_antidote &&
+    printf "\n%s" "Antidote setup didn't work" &&
+    return 1 ||
+    printf "\n%s" "Antidote setup working"
 
   ! set_version_mgrs &&
     printf "\n\%s" " set_version_mgrs didn't work" &&
@@ -184,7 +233,7 @@ function main() {
     return 1 ||
     printf "\n%s" "Display setup working"
 
-  #
+  # Missing ssh config
 
   #
   _remove_temporal_pacman_packages

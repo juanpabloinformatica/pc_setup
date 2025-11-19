@@ -1,0 +1,135 @@
+# Get repos
+#!GET BEARER TOKEN
+#curl -L \
+#  -H "Accept: application/vnd.github+json" \
+#  -H "Authorization: Bearer <BEARER_TOKEN>" \
+#  -H "X-GitHub-Api-Version: 2022-11-28" \
+#  https://api.github.com/users/juanpabloinformatica/repos | sed -n '{/clone/p;/git_url/p;/ssh_url/p}'
+
+# Repos
+
+# ANSIBLE_JENKINS.GIT
+"git_url": "git://github.com/juanpabloinformatica/ansible_jenkins.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ansible_jenkins.git",
+"clone_url": "https://github.com/juanpabloinformatica/ansible_jenkins.git",
+
+# APPLICABLE_KNOWLEDGE_C_CPP.GIT
+"git_url": "git://github.com/juanpabloinformatica/applicable_knowledge_c_cpp.git",
+"ssh_url": "git@github.com:juanpabloinformatica/applicable_knowledge_c_cpp.git",
+"clone_url": "https://github.com/juanpabloinformatica/applicable_knowledge_c_cpp.git",
+
+# C.GIT
+"git_url": "git://github.com/juanpabloinformatica/c.git",
+"ssh_url": "git@github.com:juanpabloinformatica/c.git",
+"clone_url": "https://github.com/juanpabloinformatica/c.git",
+
+# CPP.GIT
+"git_url": "git://github.com/juanpabloinformatica/cpp.git",
+"ssh_url": "git@github.com:juanpabloinformatica/cpp.git",
+"clone_url": "https://github.com/juanpabloinformatica/cpp.git",
+
+# DAYtRACKER.GIT
+"git_url": "git://github.com/juanpabloinformatica/dayTracker.git",
+"ssh_url": "git@github.com:juanpabloinformatica/dayTracker.git",
+"clone_url": "https://github.com/juanpabloinformatica/dayTracker.git",
+
+# DOTFILES.GIT
+"git_url": "git://github.com/juanpabloinformatica/dotfiles.git",
+"ssh_url": "git@github.com:juanpabloinformatica/dotfiles.git",
+"clone_url": "https://github.com/juanpabloinformatica/dotfiles.git",
+
+# DSA.GIT
+"git_url": "git://github.com/juanpabloinformatica/dsa.git",
+"ssh_url": "git@github.com:juanpabloinformatica/dsa.git",
+"clone_url": "https://github.com/juanpabloinformatica/dsa.git",
+
+# ENSIMAG-MALLOC.GIT
+"git_url": "git://github.com/juanpabloinformatica/ensimag-malloc.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ensimag-malloc.git",
+"clone_url": "https://github.com/juanpabloinformatica/ensimag-malloc.git",
+
+# ENSIMAG-VIDEO.GIT
+"git_url": "git://github.com/juanpabloinformatica/ensimag-video.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ensimag-video.git",
+"clone_url": "https://github.com/juanpabloinformatica/ensimag-video.git",
+
+# FP_CU.GIT
+"git_url": "git://github.com/juanpabloinformatica/fp_cu.git",
+"ssh_url": "git@github.com:juanpabloinformatica/fp_cu.git",
+"clone_url": "https://github.com/juanpabloinformatica/fp_cu.git",
+
+# GAME_PLATFORM.GIT
+"git_url": "git://github.com/juanpabloinformatica/game_platform.git",
+"ssh_url": "git@github.com:juanpabloinformatica/game_platform.git",
+"clone_url": "https://github.com/juanpabloinformatica/game_platform.git",
+
+# gnu-gdb-sALZMAN.GIT
+"git_url": "git://github.com/juanpabloinformatica/GNU-GDB-Salzman.git",
+"ssh_url": "git@github.com:juanpabloinformatica/GNU-GDB-Salzman.git",
+"clone_url": "https://github.com/juanpabloinformatica/GNU-GDB-Salzman.git",
+
+# IPP_P1.GIT
+"git_url": "git://github.com/juanpabloinformatica/ipp_p1.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ipp_p1.git",
+"clone_url": "https://github.com/juanpabloinformatica/ipp_p1.git",
+
+# IPP_P2.GIT
+"git_url": "git://github.com/juanpabloinformatica/ipp_p2.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ipp_p2.git",
+"clone_url": "https://github.com/juanpabloinformatica/ipp_p2.git",
+
+# IPP_P3.GIT
+"git_url": "git://github.com/juanpabloinformatica/ipp_p3.git",
+"ssh_url": "git@github.com:juanpabloinformatica/ipp_p3.git",
+"clone_url": "https://github.com/juanpabloinformatica/ipp_p3.git",
+
+# JUANPABLOINFORMATICA.GIT
+"git_url": "git://github.com/juanpabloinformatica/juanpabloinformatica.git",
+"ssh_url": "git@github.com:juanpabloinformatica/juanpabloinformatica.git",
+"clone_url": "https://github.com/juanpabloinformatica/juanpabloinformatica.git",
+
+# KNOWLEDGE.GIT
+"git_url": "git://github.com/juanpabloinformatica/knowledge.git",
+"ssh_url": "git@github.com:juanpabloinformatica/knowledge.git",
+"clone_url": "https://github.com/juanpabloinformatica/knowledge.git",
+
+# MICRO_BACKEND.GIT
+"git_url": "git://github.com/juanpabloinformatica/micro_backend.git",
+"ssh_url": "git@github.com:juanpabloinformatica/micro_backend.git",
+"clone_url": "https://github.com/juanpabloinformatica/micro_backend.git",
+
+# NAND2TETRIS.GIT
+"git_url": "git://github.com/juanpabloinformatica/nand2tetris.git",
+"ssh_url": "git@github.com:juanpabloinformatica/nand2tetris.git",
+"clone_url": "https://github.com/juanpabloinformatica/nand2tetris.git",
+
+# NAND2TETRISaSSEMBLER.GIT
+"git_url": "git://github.com/juanpabloinformatica/nand2tetrisAssembler.git",
+"ssh_url": "git@github.com:juanpabloinformatica/nand2tetrisAssembler.git",
+"clone_url": "https://github.com/juanpabloinformatica/nand2tetrisAssembler.git",
+
+# NAND2TETRISvM.GIT
+"git_url": "git://github.com/juanpabloinformatica/nand2tetrisVm.git",
+"ssh_url": "git@github.com:juanpabloinformatica/nand2tetrisVm.git",
+"clone_url": "https://github.com/juanpabloinformatica/nand2tetrisVm.git",
+
+# PC_SETUP.GIT
+"git_url": "git://github.com/juanpabloinformatica/pc_setup.git",
+"ssh_url": "git@github.com:juanpabloinformatica/pc_setup.git",
+"clone_url": "https://github.com/juanpabloinformatica/pc_setup.git",
+
+# REACTION_GAME.GIT
+"git_url": "git://github.com/juanpabloinformatica/reaction_game.git",
+"ssh_url": "git@github.com:juanpabloinformatica/reaction_game.git",
+"clone_url": "https://github.com/juanpabloinformatica/reaction_game.git",
+
+# SCRIPTS.GIT (to clone)
+"git_url": "git://github.com/juanpabloinformatica/scripts.git",
+"ssh_url": "git@github.com:juanpabloinformatica/scripts.git",
+"clone_url": "https://github.com/juanpabloinformatica/scripts.git",
+
+# THREAD_TIMER.GIT
+"git_url": "git://github.com/juanpabloinformatica/thread_timer.git",
+"ssh_url": "git@github.com:juanpabloinformatica/thread_timer.git",
+"clone_url": "https://github.com/juanpabloinformatica/thread_timer.git",
+

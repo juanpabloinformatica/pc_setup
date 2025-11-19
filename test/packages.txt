@@ -1,0 +1,66 @@
+# Packages
+# Development
+git
+neovim
+#vim
+docker
+zsh
+alacritty
+tmux
+base-devel
+valgrind
+#qemu
+#virtualbox
+
+# Video
+ffmpeg
+mpv
+
+#sound
+pipewire
+
+
+# WindowManager
+i3
+
+# Webbrowser
+firefox
+
+# Internet Request_tools
+curl
+#wget
+
+# Compression
+zip
+unzip
+
+#Bluetooth
+bluez
+bluez-utils
+
+#Background
+feh
+
+#Screen pictures
+flameshot
+
+# Process-handling
+htop-vim-git
+
+# Display handling
+xorg-server
+lightdm
+lightdm-gtk-greeter
+
+# Archlinux mirrors update
+reflector
+
+# Linux utils
+moreutils
+ripgrep
+
+# Usefult cli
+fzf
+
+# Custom
+xdg-user-dirs
