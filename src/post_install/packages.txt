@@ -22,6 +22,7 @@ pipewire
 
 # WindowManager
 i3
+dmenu
 
 # Webbrowser
 firefox

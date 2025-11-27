@@ -42,6 +42,7 @@ function _dir_handling() {
 function _set_my_dirs() {
   download_prefix="$HOME/Downloads"
   video_prefix="$HOME/Videos"
+  document_prefix="$HOME/Documents"
   needed_dirs=(
     "$download_prefix/images"
     "$download_prefix/isos"
@@ -52,6 +53,12 @@ function _set_my_dirs() {
     "$video_prefix/nand2tetris"
     "$video_prefix/scripts"
     "$video_prefix/others"
+    "$document_prefix/courses"
+    "$document_prefix/personal"
+    "$document_prefix/profesional"
+    "$document_prefix/books"
+    "$document_prefix/sharpening"
+    "$document_prefix/projects"
   )
   _dir_handling
 }
@@ -98,10 +105,10 @@ function set_nvm() {
   printf "\n%s" "set_nvm  function"
   needed_packages=("curl")
   _packages_handling
-	needed_dirs=( "$HOME/.config/zsh" )
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh
-	source "${needed_dirs[0]}/.zshrc"
-  nvm install stable || return 1
+  needed_dirs=("$HOME/.config/zsh")
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+	source "$HOME/.config/zsh/.zshrc"
+  # ${nvm_bin} install stable || return 1
 }
 function set_pyenv() {
   printf "\n%s" "set_pyenv function"
@@ -117,7 +124,7 @@ function set_dotfiles() {
   _dir_handling
 
   [[ ! -d "${dir[0]}/dotfiles" ]] &&
-    git clone --recursive-submodules https://github.com/juanpabloinformatica/dotfiles.git "${dir[0]}"
+    git clone --recurse-submodules https://github.com/juanpabloinformatica/dotfiles.git "${dir[0]}/dotfiles"
 
   if [[ -d "${dir[0]}/dotfiles" ]]; then
     (
@@ -125,7 +132,6 @@ function set_dotfiles() {
       bash script_dotfiles.sh
     )
   fi
-
 }
 function handling_essential_user_packages() {
   printf "\n%s" "Handling essential packages"
@@ -160,9 +166,9 @@ function set_scripts() {
   needed_dirs=("$HOME/Documents")
   _dir_handling
   script_url="$(awk '$0 ~ /scripts\.git/ && $0 ~ /clone_url/ {print $2}' ./repos.txt | tr -d "\"" | tr -d ",")"
-  [[ ! -d "${dir[0]}/scripts" ]] &&
+  if [[ ! -d "${dir[0]}/scripts" ]]; then
     git clone "${script_url}" "${dir[0]}/scripts"
-
+  fi
 }
 
 function set_antidote() {
@@ -170,8 +176,9 @@ function set_antidote() {
   _packages_handling
   needed_dirs=("$HOME/.config/zsh")
   _dir_handling
-  [[ ! -d "${dir[0]}/.antidote" ]] &&
+  if [[ ! -d "${dir[0]}/.antidote" ]]; then
     git clone --depth=1 https://github.com/mattmc3/antidote.git "${dir[0]}/.antidote"
+  fi
 
 }
 
@@ -216,6 +223,12 @@ function main() {
     printf "\n%s" "font setup didn't work" &&
     return 1 ||
     printf "\n%s" "font setup working"
+
+  # ! set_zsh &&
+  #   printf "\n%s" "set_zsh setup didn't work" &&
+  #   return 1 ||
+  #   printf "\n%s" "set_zsh setup working"
+
 
   ! set_antidote &&
     printf "\n%s" "Antidote setup didn't work" &&
